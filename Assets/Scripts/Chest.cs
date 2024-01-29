@@ -16,7 +16,7 @@ public class Chest : NetworkBehaviour, Interactable
 
     //Interact to the interactor 
     public bool Interact(Interactor interactor){
-        Debug.Log("Chest");
+        Debug.Log(_prompt);
         return(true);
         //UpdateInteraction(this , true);
     }

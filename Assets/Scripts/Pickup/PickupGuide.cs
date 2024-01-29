@@ -4,6 +4,7 @@ using UnityEngine;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet;
+using FishNet.Demo.AdditiveScenes;
 
 public class PickupGuide : NetworkBehaviour
 {
@@ -20,7 +21,8 @@ public class PickupGuide : NetworkBehaviour
     GameObject objInHand;
     Transform worldObjectHolder;
     private readonly Collider[] _colliders = new Collider[3];
- 
+
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -29,14 +31,12 @@ public class PickupGuide : NetworkBehaviour
             enabled = false;
  
        // cam = Camera.main;
-       // worldObjectHolder = GameObject.FindGameObjectWithTag("WorldObjects").transform;
+       worldObjectHolder = GameObject.FindGameObjectWithTag("WorldObjects").transform;
+        Debug.Log(worldObjectHolder.name);
     }
  
     private void Update()
     {
-        pickupfound = Physics.OverlapSphereNonAlloc(_pickupPoint.position, 1f, _colliders,pickupLayer);
-        Debug.Log(objInHand);
-
         if (Input.GetKeyDown(pickupButton))
             Pickup();
  
@@ -46,24 +46,36 @@ public class PickupGuide : NetworkBehaviour
  
     void Pickup()
     {
-        pickupfound = Physics.OverlapSphereNonAlloc(_pickupPoint.position, 1f, _colliders,pickupLayer);
-        Debug.Log(pickupfound);
+        pickupfound = Physics.OverlapSphereNonAlloc(_pickupPoint.position, 1f, _colliders, pickupLayer);
+        
         if (pickupfound>0){
             //refrencint the interactable from this collider
             var pickupable = _colliders[0].transform.gameObject;
-
-            if(pickupable != null && !hasObjectInHand)
+            var entity = pickupable.GetComponent<IEntity>();
+            Debug.Log(pickupable);
+           
+            if( entity != null && !hasObjectInHand)
             {
                 SetObjectInHandServer(pickupable, pickupPosition.position, pickupPosition.rotation, gameObject);
                 hasObjectInHand = true;
                 objInHand = pickupable;
+                pickupable.transform.parent = this.transform;
             }
-            else if(hasObjectInHand)
+            else if(entity == null && hasObjectInHand)
             {
                 Drop();
                 SetObjectInHandServer(pickupable, pickupPosition.position, pickupPosition.rotation, gameObject);
                 objInHand = pickupable;
                 hasObjectInHand = true;
+                pickupable.transform.parent = worldObjectHolder.transform;
+            }
+            else if (entity == null && !hasObjectInHand )
+            {
+                pickupable.transform.parent = worldObjectHolder.transform;
+            }
+            else
+            {
+                pickupable.transform.parent = worldObjectHolder.transform;
             }
         }
         
@@ -96,12 +108,13 @@ public class PickupGuide : NetworkBehaviour
     [ObserversRpc]
     void SetObjectInHandObserver(GameObject obj, Vector3 position, Quaternion rotation, GameObject player)
     {
-        obj.transform.position = position;
-        obj.transform.rotation = rotation;
-        obj.transform.parent = player.transform;
- 
-        if (obj.GetComponent<Rigidbody>() != null)
-            obj.GetComponent<Rigidbody>().isKinematic = true;
+            obj.transform.parent = player.transform;
+            obj.transform.position = position;
+            obj.transform.rotation = rotation;
+            
+
+            if (obj.GetComponent<Rigidbody>() != null)
+                obj.GetComponent<Rigidbody>().isKinematic = true;
     }
  
     void Drop()
@@ -123,8 +136,9 @@ public class PickupGuide : NetworkBehaviour
     [ObserversRpc]
     void DropObjectObserver(GameObject obj, Transform worldHolder)
     {
-        obj.transform.parent = worldHolder;
- 
+        obj.transform.parent = worldObjectHolder;
+        Debug.Log(worldHolder);
+
         if(obj.GetComponent<Rigidbody>() != null)
             obj.GetComponent<Rigidbody>().isKinematic = false;
     }
