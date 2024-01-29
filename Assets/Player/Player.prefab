@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 8457357599737805457}
   - component: {fileID: 5578458910280620495}
   - component: {fileID: 6175722095627366585}
-  - component: {fileID: 1426108581255198884}
+  - component: {fileID: 4601442313273218090}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -785,33 +785,27 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 5809141880872962142}
   objectSpawn: {fileID: 8306195766855240210, guid: 05949cc9e8212ee4088867b6b92113e6, type: 3}
   spawnedObject: {fileID: 0}
---- !u!54 &1426108581255198884
-Rigidbody:
+--- !u!114 &4601442313273218090
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7945516875390772188}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 64
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5809141880872962142}
+  _networkObjectCache: {fileID: 0}
+  IgnoredParameters: []
+  _animator: {fileID: 9068927926761805442}
+  _smoothFloats: 1
+  _interpolation: 2
+  _clientAuthoritative: 1
+  _sendToOwner: 0
 --- !u!1 &8007516149875255178
 GameObject:
   m_ObjectHideFlags: 0
