@@ -83,7 +83,7 @@ public class PlayerControl : NetworkBehaviour
         //movement direction 
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
         //rotate the body
-        playerbody.transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * turnSpeed);
+        //playerbody.transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * turnSpeed);
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
