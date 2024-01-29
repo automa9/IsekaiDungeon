@@ -1282,6 +1282,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreasureChest
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 665fcbd7b076c4c899123388f02f6600, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: 665fcbd7b076c4c899123388f02f6600, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1289,6 +1297,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2534866581884222612, guid: 665fcbd7b076c4c899123388f02f6600, type: 3}
       insertIndex: -1
       addedObject: {fileID: 830264480}
+    - targetCorrespondingSourceObject: {fileID: 2534866581884222612, guid: 665fcbd7b076c4c899123388f02f6600, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 830264484}
   m_SourcePrefab: {fileID: 100100000, guid: 665fcbd7b076c4c899123388f02f6600, type: 3}
 --- !u!1 &481476410 stripped
 GameObject:
@@ -1316,6 +1327,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.6000006, y: 4.6, z: 0.100000024}
   m_Center: {x: 0, y: 2.3999999, z: -0.050000012}
+--- !u!114 &481476416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481476410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38443676b69cdcf40852d1c19ba245c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prompt: door
 --- !u!4 &520920636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8765550017072425695ce3d72ab3760c, type: 3}
@@ -1959,6 +1983,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3000001, y: 0.99999994, z: 1.6000003}
   m_Center: {x: 0.0061540017, y: 0.49551198, z: -0.007313014}
+--- !u!114 &830264484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830264478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ce6ff87832cd844a184c66b69ac424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prompt: Chest
 --- !u!1001 &839323049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2701,23 +2738,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4216859302048453862, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7395333
+      value: 0.7499607
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7395333
+      value: 0.7499607
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7395333
+      value: 0.7499607
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.142
+      value: 7.1425
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.092
+      value: -4.1171
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2755,6 +2792,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorArch
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2762,6 +2807,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2534866581884222612, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 481476412}
+    - targetCorrespondingSourceObject: {fileID: 2534866581884222612, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 481476416}
   m_SourcePrefab: {fileID: 100100000, guid: 1624c1686844f49f682f414a39f969ec, type: 3}
 --- !u!1 &1538680434 stripped
 GameObject:

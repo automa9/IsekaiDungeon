@@ -198,6 +198,37 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!1 &3538275530935088142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5416903899564176439}
+  m_Layer: 7
+  m_Name: Interactor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5416903899564176439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3538275530935088142}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.256, z: 0.448}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4585686181353358876}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4265150219157968375
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4585686181353358876}
   - component: {fileID: 9068927926761805442}
+  - component: {fileID: -4691489257615866979}
   - component: {fileID: 30389768833238098}
   - component: {fileID: 5965747964723116169}
   - component: {fileID: 1046040912054359953}
@@ -368,6 +400,7 @@ Transform:
   - {fileID: 6705946700787612318}
   - {fileID: 3364325339822962475}
   - {fileID: 3150259551327106288}
+  - {fileID: 5416903899564176439}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9068927926761805442
@@ -391,6 +424,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4691489257615866979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7945516875390772188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62b03922a4d0db41a3523ca8db68546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionPoint: {fileID: 5416903899564176439}
+  _interactionRadius: 0.5
+  _interactableMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _numFound: 0
 --- !u!114 &30389768833238098
 MonoBehaviour:
   m_ObjectHideFlags: 0
