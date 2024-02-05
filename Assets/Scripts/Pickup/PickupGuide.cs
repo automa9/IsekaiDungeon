@@ -9,19 +9,17 @@ using FishNet.Demo.AdditiveScenes;
 public class PickupGuide : NetworkBehaviour
 {
     [SerializeField] private Transform _pickupPoint;
-
     [SerializeField] LayerMask pickupLayer;
     [SerializeField] Transform pickupPosition;
     [SerializeField] KeyCode pickupButton = KeyCode.E;
     [SerializeField] KeyCode dropButton = KeyCode.Q;
-     [SerializeField] private int pickupfound;
+    [SerializeField] private int pickupfound;
  
     //Camera cam;
     bool hasObjectInHand;
     GameObject objInHand;
     Transform worldObjectHolder;
     private readonly Collider[] _colliders = new Collider[3];
-
 
     public override void OnStartClient()
     {
@@ -46,7 +44,7 @@ public class PickupGuide : NetworkBehaviour
  
     void Pickup()
     {
-        pickupfound = Physics.OverlapSphereNonAlloc(_pickupPoint.position, 1f, _colliders, pickupLayer);
+        pickupfound = Physics.OverlapSphereNonAlloc(_pickupPoint.position, 0.5f, _colliders, pickupLayer);
         
         if (pickupfound>0){
             //refrencint the interactable from this collider
@@ -64,39 +62,21 @@ public class PickupGuide : NetworkBehaviour
             else if(entity == null && hasObjectInHand)
             {
                 Drop();
-                SetObjectInHandServer(pickupable, pickupPosition.position, pickupPosition.rotation, gameObject);
+                //SetObjectInHandServer(pickupable, pickupPosition.position, pickupPosition.rotation, gameObject);
                 objInHand = pickupable;
-                hasObjectInHand = true;
+                hasObjectInHand = false;
                 pickupable.transform.parent = worldObjectHolder.transform;
             }
             else if (entity == null && !hasObjectInHand )
             {
-                pickupable.transform.parent = worldObjectHolder.transform;
-            }
-            else
-            {
-                pickupable.transform.parent = worldObjectHolder.transform;
-            }
-        }
-        
-        /*if(Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionRadius, _colliders,_interactableMask))
-        {
-            if (!hasObjectInHand)
-            {
-                
-                
-               
-            } 
-            else if(hasObjectInHand)
-            {
+                //pickupable.transform.parent = worldObjectHolder.transform;
                 Drop();
- 
-                SetObjectInHandServer(hit.transform.gameObject, pickupPosition.position, pickupPosition.rotation, gameObject);
-                objInHand = hit.transform.gameObject;
-                hasObjectInHand = true;
+                //SetObjectInHandServer(pickupable, pickupPosition.position, pickupPosition.rotation, gameObject);
+                objInHand = pickupable;
+                hasObjectInHand = false;
+                pickupable.transform.parent = worldObjectHolder.transform;
             }
         }
-        */
     }
  
     [ServerRpc(RequireOwnership = false)]
@@ -145,6 +125,6 @@ public class PickupGuide : NetworkBehaviour
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(_pickupPoint.position,1f);
+        Gizmos.DrawWireSphere(_pickupPoint.position,0.5f);
     }
 }

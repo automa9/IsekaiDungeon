@@ -1,4 +1,12 @@
-﻿ using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using FishNet.Connection;
+using FishNet.Object;
+using Cinemachine;
+using FishNet.Example.ColliderRollbacks;
+using FishNet.Example.Scened;
+
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -12,7 +20,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class PlayerMovement : NetworkBehaviour
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -122,6 +130,17 @@ namespace StarterAssets
             }
         }
 
+        //On client
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (base.IsOwner)
+        {
+            GameObject.FindGameObjectWithTag("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow = transform.GetChild(0).transform;
+            _playerInput.enabled = true;
+        }
+    }
+
 
         private void Awake()
         {
@@ -150,6 +169,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         private void Update()
